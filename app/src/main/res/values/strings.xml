@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ZocDoc</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="feeling_meh_nfind_a_doctor">Feeling meh? \nFind a doctor.</string>
+    <string name="what_are_you_looking_for">What are you looking for?</string>
+    <string name="enter_a_location">Enter a location</string>
+    <string name="do_you_have_insurance">Do you have insurance?</string>
+    <string name="i_ll_choose_my_insurance_later">I\'ll choose my insurance later</string>
 </resources>
