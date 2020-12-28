@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
             if (position == 0) return SearchFragment()
             if (position == 1) return AppointmentsFragment()
             if (position == 2) return MedicalTeamFragment()
+            if (position == 3) return RecommendationsFragment()
             return fragment
         }
 
