@@ -10,4 +10,6 @@
     <string name="appointments">Appointments</string>
     <string name="appointments_summary">Your past and future appointments will be listed here whenever you book a visit. What are you waiting for, anyway?</string>
     <string name="find_a_doctor">Find a doctor</string>
+    <string name="medical_team">Medical Team</string>
+    <string name="medical_team_summary">Your doctors will show up here when you start booking appointments. It\'s like your personal superhero team for staying healthy.</string>
 </resources>

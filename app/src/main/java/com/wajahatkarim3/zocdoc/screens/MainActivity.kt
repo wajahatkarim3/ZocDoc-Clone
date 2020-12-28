@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
             var fragment = SearchFragment()
             if (position == 0) return SearchFragment()
             if (position == 1) return AppointmentsFragment()
+            if (position == 2) return MedicalTeamFragment()
             return fragment
         }
 
