@@ -19,11 +19,9 @@
     <TextView android:id="@+id/lblFeelingMeh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/imgGreenShape"
-        app:layout_constraintBottom_toBottomOf="@id/imgGreenShape"
-        app:layout_constraintVertical_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardViewOptions"
+        app:layout_constraintStart_toStartOf="@+id/cardViewOptions"
+        android:layout_marginBottom="30dp"
         android:fontFamily="sans-serif"
         android:text="@string/feeling_meh_nfind_a_doctor"
         android:textStyle="bold"
@@ -31,11 +29,14 @@
         android:textSize="50sp"/>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardViewOptions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/lblFeelingMeh"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_margin="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="40dp"
         app:cardBackgroundColor="@android:color/transparent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
