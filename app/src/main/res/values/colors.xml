@@ -5,6 +5,9 @@
     <color name="colorPrimary">#FEF200</color>
     <color name="colorPrimaryVariant">#00234B</color>
     <color name="colorOnPrimary">#00234B</color>
+    <color name="colorSecondary">#37B9E3</color>
+    <color name="colorSecondaryVariant">#147C9E</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
 
     <color name="tabNormalColor">#737373</color>
     <color name="backgroundColor">#F3F3F3</color>

@@ -34,15 +34,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    inner class MainViewPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(
-        fm,
-        BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
-    ) {
+    fun selectTab(tabIndex: Int) {
+        if (tabIndex >= 0 && tabIndex < viewPagerAdapter.count)
+        {
+            bi.viewPager.setCurrentItem(tabIndex, true)
+        }
+    }
+
+    inner class MainViewPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
         override fun getCount() = 5
 
         override fun getItem(position: Int): Fragment {
             var fragment = SearchFragment()
+            if (position == 0) return SearchFragment()
+            if (position == 1) return AppointmentsFragment()
             return fragment
         }
 

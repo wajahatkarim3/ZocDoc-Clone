@@ -7,4 +7,7 @@
     <string name="enter_a_location">Enter a location</string>
     <string name="do_you_have_insurance">Do you have insurance?</string>
     <string name="i_ll_choose_my_insurance_later">I\'ll choose my insurance later</string>
+    <string name="appointments">Appointments</string>
+    <string name="appointments_summary">Your past and future appointments will be listed here whenever you book a visit. What are you waiting for, anyway?</string>
+    <string name="find_a_doctor">Find a doctor</string>
 </resources>
