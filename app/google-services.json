@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "795707521158",
+    "project_id": "zocdoc-app",
+    "storage_bucket": "zocdoc-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795707521158:android:ddedf6e5ff44581d7fb907",
+        "android_client_info": {
+          "package_name": "com.wajahatkarim3.zocdoc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "795707521158-lgh6ak87l2iadslk2sof72vgd6ejormc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wajahatkarim3.zocdoc",
+            "certificate_hash": "71f1ec48a33a460d8c65885b5854d56e9de9ee11"
+          }
+        },
+        {
+          "client_id": "795707521158-pp2nhvgulcc8b0bf79pq2tbbbv7079b3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf9SxAWdUpij61i08rQIVzX7GGiSCWyt4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "795707521158-pp2nhvgulcc8b0bf79pq2tbbbv7079b3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
