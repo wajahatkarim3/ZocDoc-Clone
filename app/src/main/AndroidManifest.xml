@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wajahatkarim3.zocdoc">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ZocDoc">
-        <activity android:name=".screens.DoctorsSearchActivity"></activity>
+        <activity android:name=".screens.DoctorDetailsActivity"></activity>
+        <activity android:name=".screens.DoctorsSearchActivity" />
         <activity
             android:name=".screens.SplashActivity"
             android:theme="@style/Theme.ZocDoc.NoActionBar">
@@ -23,7 +24,7 @@
         </activity>
         <activity
             android:name=".screens.MainActivity"
-            android:theme="@style/Theme.ZocDoc.NoActionBar"></activity>
+            android:theme="@style/Theme.ZocDoc.NoActionBar" />
     </application>
 
 </manifest>

@@ -1,0 +1,59 @@
+package com.wajahatkarim3.zocdoc.screens
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.TextView
+import coil.load
+import coil.transform.CircleCropTransformation
+import com.thetechnocafe.gurleensethi.liteutils.RecyclerAdapterUtil
+import com.wajahatkarim3.zocdoc.R
+import com.wajahatkarim3.zocdoc.databinding.ActivityDoctorDetailsBinding
+import com.wajahatkarim3.zocdoc.model.DoctorModel
+
+class DoctorDetailsActivity : AppCompatActivity() {
+
+    lateinit var bi: ActivityDoctorDetailsBinding
+    var doctor: DoctorModel? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        bi = ActivityDoctorDetailsBinding.inflate(layoutInflater)
+        setContentView(bi.root)
+
+        if (intent.extras != null && intent.hasExtra("doctor")) {
+            doctor = intent.getParcelableExtra("doctor")
+        }
+
+        setupViews()
+        initDoctorDetails()
+    }
+
+    fun setupViews() {
+        // Toolbar
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = doctor!!.name
+    }
+
+    fun initDoctorDetails() {
+        doctor?.let {
+            bi.apply {
+                txtName.setText(it.name)
+                txtAddress.setText(it.address.replace("\n", " "))
+                txtCategory.setText(it.category)
+                ratingBar.setStar(it.rating)
+                imgAvatar.load(it.imageUrl) {
+                    crossfade(true)
+                    placeholder(R.color.backgroundColor)
+                    transformations(CircleCropTransformation())
+                }
+
+                var slotsAdapter = RecyclerAdapterUtil<String>(this@DoctorDetailsActivity, it.timeSlots, R.layout.item_time_slot_layout)
+                slotsAdapter.addOnDataBindListener { itemView, item, position, _ ->
+                    itemView.findViewById<TextView>(R.id.txtTime).setText(item)
+                }
+                recyclerTimeSlots.adapter = slotsAdapter
+            }
+        }
+    }
+}

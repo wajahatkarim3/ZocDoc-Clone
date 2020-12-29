@@ -1,5 +1,9 @@
 package com.wajahatkarim3.zocdoc.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class DoctorModel(
     val doctorId: Int,
     val name: String,
@@ -8,7 +12,7 @@ data class DoctorModel(
     val address: String,
     val imageUrl: String,
     val timeSlots: ArrayList<String>
-) {
+): Parcelable {
     companion object {
         fun random(pos: Int = 0): DoctorModel {
             var names = arrayOf(

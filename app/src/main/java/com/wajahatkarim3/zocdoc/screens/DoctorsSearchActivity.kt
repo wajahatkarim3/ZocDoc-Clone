@@ -1,5 +1,6 @@
 package com.wajahatkarim3.zocdoc.screens
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -57,6 +58,11 @@ class DoctorsSearchActivity : AppCompatActivity() {
                 }
                 recyclerTimeSlots.adapter = slotsAdapter
             }
+        }
+        recyclerAdapter.addOnClickListener { item, position ->
+            var intent = Intent(this, DoctorDetailsActivity::class.java)
+            intent.putExtra("doctor", item)
+            startActivity(intent)
         }
         bi.recyclerDoctors.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         bi.recyclerDoctors.adapter = recyclerAdapter
