@@ -43,6 +43,9 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.github.Jamshid-M:ExactRatingBar:1.0.0'
+    implementation 'com.github.gurleensethi:LiteUtilities:v1.3.0'
+    implementation("io.coil-kt:coil:1.1.0")
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

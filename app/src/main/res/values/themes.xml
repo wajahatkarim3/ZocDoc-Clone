@@ -18,7 +18,14 @@
         <item name="colorOnSecondary">@color/colorOnSecondary</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="toolbarStyle">@style/Theme.ZocDoc.Toolbar</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.ZocDoc.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="titleTextColor">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/colorPrimaryVariant</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryVariant</item>
     </style>
 
     <style name="DatePickerDialogTheme" parent="Theme.MaterialComponents.DayNight.Dialog.Alert">
@@ -29,6 +36,12 @@
 
     <style name="DatePickerTheme.ButtonBarNegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">@color/colorSecondaryVariant</item>
+    </style>
+
+    <style name="RatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="colorControlActivated">@color/starRatingColor</item>
+        <item name="minHeight">10dp</item>
+        <item name="maxHeight">10dp</item>
     </style>
 
 </resources>

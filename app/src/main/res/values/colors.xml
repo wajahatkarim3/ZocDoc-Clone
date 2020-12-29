@@ -11,4 +11,5 @@
 
     <color name="tabNormalColor">#737373</color>
     <color name="backgroundColor">#F3F3F3</color>
+    <color name="starRatingColor">#FF6472</color>
 </resources>

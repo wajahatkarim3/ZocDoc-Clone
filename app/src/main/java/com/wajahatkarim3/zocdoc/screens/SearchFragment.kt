@@ -1,6 +1,7 @@
 package com.wajahatkarim3.zocdoc.screens
 
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -37,5 +38,11 @@ class SearchFragment : Fragment() {
         imageViewAnimator.repeatMode = ObjectAnimator.RESTART
         imageViewAnimator.duration = 30_000
         imageViewAnimator.start()
+
+        // Find
+        bi.btnFind.setOnClickListener {
+            var intent = Intent(context, DoctorsSearchActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
