@@ -1,5 +1,6 @@
 package com.wajahatkarim3.zocdoc.screens
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -29,6 +30,14 @@ class ProfileFragment : Fragment() {
     }
 
     fun setupViews() {
-        //
+        bi.txtLogin.setOnClickListener {
+            var intent = Intent(activity!!, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        bi.txtSignup.setOnClickListener {
+            var intent = Intent(activity!!, SignupActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

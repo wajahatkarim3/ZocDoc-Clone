@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ZocDoc">
-        <activity android:name=".screens.DoctorDetailsActivity"></activity>
+        <activity android:name=".screens.SignupActivity" android:launchMode="singleTop"></activity>
+        <activity android:name=".screens.LoginActivity" android:launchMode="singleTop"/>
+        <activity android:name=".screens.DoctorDetailsActivity" />
         <activity android:name=".screens.DoctorsSearchActivity" />
         <activity
             android:name=".screens.SplashActivity"
