@@ -11,17 +11,25 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ZocDoc">
-        <activity android:name=".screens.DoctorMainActivity"
-            android:theme="@style/Theme.ZocDoc.NoActionBar"></activity>
+        android:theme="@style/Theme.ZocDoc.NoActionBar">
+        <activity android:name=".screens.ChatActivity"></activity>
+        <activity
+            android:name=".screens.DoctorMainActivity"
+            android:theme="@style/Theme.ZocDoc.NoActionBar" />
         <activity
             android:name=".screens.SignupActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme.ZocDoc" />
         <activity
             android:name=".screens.LoginActivity"
-            android:launchMode="singleInstance" />
-        <activity android:name=".screens.DoctorDetailsActivity" />
-        <activity android:name=".screens.DoctorsSearchActivity" />
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme.ZocDoc" />
+        <activity
+            android:name=".screens.DoctorDetailsActivity"
+            android:theme="@style/Theme.ZocDoc" />
+        <activity
+            android:name=".screens.DoctorsSearchActivity"
+            android:theme="@style/Theme.ZocDoc" />
         <activity
             android:name=".screens.SplashActivity"
             android:theme="@style/Theme.ZocDoc.NoActionBar">

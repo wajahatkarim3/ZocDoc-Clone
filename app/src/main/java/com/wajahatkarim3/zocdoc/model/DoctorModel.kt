@@ -5,18 +5,26 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class DoctorModel(
-    val doctorId: Int,
+    val doctorId: String,
     val name: String,
-    val category: String,
-    var rating: Float,
-    val address: String,
-    val imageUrl: String,
-    val timeSlots: ArrayList<String>
+    val category: String = "Primary Care Doctor",
+    var rating: Float = 0f,
+    val address: String = "",
+    val imageUrl: String = "",
+    val timeSlots: ArrayList<String> = arrayListOf()
 ): Parcelable {
     companion object {
         fun random(pos: Int = 0): DoctorModel {
+            var ids = arrayOf(
+                "nlrfmbcfkpmcq3wm9dmdjjcllzn1",
+                "superhero1",
+                "superhero2",
+                "superhero3",
+                "superhero4",
+                "superhero5"
+            )
             var names = arrayOf(
-                "Dr. Cierra Vega, MD",
+                "Dr. John, MD",
                 "Dr. Alden Cantrell, MD",
                 "Dr. Kierra Gentry, MD, PhD",
                 "Dr. Pierre Cox, PhD",
@@ -41,7 +49,7 @@ data class DoctorModel(
             )
 
             var doctorModel = DoctorModel(
-                doctorId = 1,
+                doctorId = ids[pos],
                 name = names[pos],
                 category = "Primary Care Doctor",
                 rating = (4..10).random() / 2f,

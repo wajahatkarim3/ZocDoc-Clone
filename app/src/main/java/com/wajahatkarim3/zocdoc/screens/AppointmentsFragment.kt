@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.cometchat.pro.core.CometChat
 import com.wajahatkarim3.zocdoc.R
 import com.wajahatkarim3.zocdoc.databinding.FragmentAppointmentsBinding
 
@@ -26,6 +27,7 @@ class AppointmentsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         setupViews()
+        setLoggedInUI()
     }
 
     fun setupViews() {
@@ -35,6 +37,13 @@ class AppointmentsFragment : Fragment() {
 
         bi.btnLogin.setOnClickListener {
             (activity as? MainActivity)?.selectTab(4)
+        }
+    }
+
+    fun setLoggedInUI() {
+        if (CometChat.getLoggedInUser() != null) {
+            bi.btnLogin.visibility = View.GONE
+            bi.lblHaveAccount.visibility = View.GONE
         }
     }
 }

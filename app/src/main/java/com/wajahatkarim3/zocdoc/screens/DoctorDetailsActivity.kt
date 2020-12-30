@@ -1,5 +1,6 @@
 package com.wajahatkarim3.zocdoc.screens
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -34,6 +35,13 @@ class DoctorDetailsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = doctor!!.name
+
+        // Chat
+        bi.btnChat.setOnClickListener {
+            var intent = Intent(this, ChatActivity::class.java)
+            intent.putExtra("doctor", doctor!!)
+            startActivity(intent)
+        }
     }
 
     fun initDoctorDetails() {
