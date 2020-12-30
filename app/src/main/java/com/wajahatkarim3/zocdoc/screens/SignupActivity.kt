@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import com.wajahatkarim3.zocdoc.R
 import com.wajahatkarim3.zocdoc.databinding.ActivitySignupBinding
+import org.json.JSONObject
 
 class SignupActivity : AppCompatActivity() {
 
@@ -77,14 +78,34 @@ class SignupActivity : AppCompatActivity() {
                         cometUser.uid = firebaseUser!!.uid
                         cometUser.name = bi.txtName.text.toString()
 
+                        var meta = JSONObject()
+                        meta.put("isDoctor", bi.radioDoctor.isChecked)
+                        cometUser.metadata = meta
+
                         CometChat.createUser(cometUser, getString(R.string.auth_key), object : CometChat.CallbackListener<User>() {
                             override fun onSuccess(u: User?) {
                                 Log.d("createUser", u.toString());
 
                                 CometChat.login(cometUser.uid, getString(R.string.auth_key), object : CometChat.CallbackListener<User>() {
                                     override fun onSuccess(u: User?) {
-                                        setResult(RESULT_OK)
-                                        finish()
+
+                                        if (u?.metadata?.has("isDoctor") == true && u.metadata?.getBoolean("isDoctor") == true) {
+                                            val i = Intent(applicationContext, DoctorMainActivity::class.java)
+                                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                            startActivity(i)
+                                            finish()
+                                        }
+                                        else {
+                                            val i = Intent(applicationContext, MainActivity::class.java)
+                                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                            startActivity(i)
+                                            finish()
+                                        }
+
                                     }
 
                                     override fun onError(ex: CometChatException?) {

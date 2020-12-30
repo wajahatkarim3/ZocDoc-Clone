@@ -72,8 +72,22 @@ class LoginActivity : AppCompatActivity() {
                     var firebaseUser = auth.currentUser
                     CometChat.login(firebaseUser!!.uid, getString(R.string.auth_key), object : CometChat.CallbackListener<User>() {
                         override fun onSuccess(u: User?) {
-                            setResult(RESULT_OK)
-                            finish()
+                            if (u?.metadata?.has("isDoctor") == true && u.metadata?.getBoolean("isDoctor") == true) {
+                                val i = Intent(applicationContext, DoctorMainActivity::class.java)
+                                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                startActivity(i)
+                                finish()
+                            }
+                            else {
+                                val i = Intent(applicationContext, MainActivity::class.java)
+                                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                startActivity(i)
+                                finish()
+                            }
                         }
 
                         override fun onError(ex: CometChatException?) {

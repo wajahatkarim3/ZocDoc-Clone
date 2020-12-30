@@ -7,6 +7,17 @@
     android:background="@color/backgroundColor"
     tools:context=".screens.ProfileFragment">
 
+    <TextView android:id="@+id/txtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <TextView android:id="@+id/txtLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,7 +25,7 @@
         android:background="@color/white"
         android:visibility="visible"
         android:padding="10dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtName"
         android:layout_marginTop="20dp"
         android:drawableStart="@drawable/ic_outline_edit_24"
         android:drawablePadding="10dp"
@@ -42,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:constraint_referenced_ids="txtLogin, txtSignup, txtSignout"
+        app:constraint_referenced_ids="txtLogin, txtSignup, txtSignout, txtName"
         app:barrierDirection="bottom"/>
 
     <TextView android:id="@+id/txtSignout"
@@ -52,7 +63,7 @@
         android:background="@color/white"
         android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/txtContact"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtName"
         android:layout_marginTop="10dp"
         android:drawableStart="@drawable/ic_baseline_perm_identity_24"
         android:drawablePadding="10dp"

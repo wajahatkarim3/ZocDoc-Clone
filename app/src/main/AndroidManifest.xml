@@ -4,15 +4,22 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <application android:name=".ZocdocApp"
+    <application
+        android:name=".ZocdocApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ZocDoc">
-        <activity android:name=".screens.SignupActivity" android:launchMode="singleInstance"></activity>
-        <activity android:name=".screens.LoginActivity" android:launchMode="singleInstance"/>
+        <activity android:name=".screens.DoctorMainActivity"
+            android:theme="@style/Theme.ZocDoc.NoActionBar"></activity>
+        <activity
+            android:name=".screens.SignupActivity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".screens.LoginActivity"
+            android:launchMode="singleInstance" />
         <activity android:name=".screens.DoctorDetailsActivity" />
         <activity android:name=".screens.DoctorsSearchActivity" />
         <activity

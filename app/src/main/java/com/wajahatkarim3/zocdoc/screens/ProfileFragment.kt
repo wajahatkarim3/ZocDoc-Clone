@@ -16,8 +16,6 @@ import com.wajahatkarim3.zocdoc.databinding.FragmentProfileBinding
 class ProfileFragment : Fragment() {
 
     lateinit var bi: FragmentProfileBinding
-    val RC_SIGNUP = 1213
-    val RC_LOGIN = 12135
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,18 +37,23 @@ class ProfileFragment : Fragment() {
     fun setupViews() {
         bi.txtLogin.setOnClickListener {
             var intent = Intent(activity!!, LoginActivity::class.java)
-            startActivityForResult(intent, RC_LOGIN)
+            startActivity(intent)
         }
 
         bi.txtSignup.setOnClickListener {
             var intent = Intent(activity!!, SignupActivity::class.java)
-            startActivityForResult(intent, RC_SIGNUP)
+            startActivity(intent)
         }
 
         bi.txtSignout.setOnClickListener {
             CometChat.logout(object : CometChat.CallbackListener<String>() {
                 override fun onSuccess(p0: String?) {
-                    setLoggedInUI()
+                    val i = Intent(activity, MainActivity::class.java)
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(i)
+                    activity?.finish()
                 }
 
                 override fun onError(ex: CometChatException?) {
@@ -65,18 +68,12 @@ class ProfileFragment : Fragment() {
             bi.txtSignup.visibility = View.VISIBLE
             bi.txtLogin.visibility = View.VISIBLE
             bi.txtSignout.visibility = View.GONE
+            bi.txtName.setText(getString(R.string.hello_name, "Guest"))
         } else {
             bi.txtSignup.visibility = View.GONE
             bi.txtLogin.visibility = View.GONE
             bi.txtSignout.visibility = View.VISIBLE
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if ((requestCode == RC_SIGNUP || requestCode == RC_LOGIN) && resultCode == RESULT_OK) {
-            setLoggedInUI()
+            bi.txtName.setText(getString(R.string.hello_name, CometChat.getLoggedInUser().name))
         }
     }
 }
