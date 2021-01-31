@@ -5,9 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.cometchat.pro.core.CometChat
-import com.wajahatkarim3.zocdoc.R
 import com.wajahatkarim3.zocdoc.databinding.FragmentAppointmentsBinding
+import kotlin.random.Random
 
 class AppointmentsFragment : Fragment() {
 
@@ -41,7 +40,8 @@ class AppointmentsFragment : Fragment() {
     }
 
     fun setLoggedInUI() {
-        if (CometChat.getLoggedInUser() != null) {
+        var isLoggedIn = Random.nextBoolean()
+        if (isLoggedIn) {
             bi.btnLogin.visibility = View.GONE
             bi.lblHaveAccount.visibility = View.GONE
         }

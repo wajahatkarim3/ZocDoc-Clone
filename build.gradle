@@ -22,9 +22,6 @@ allprojects {
         google()
         maven { url 'https://jitpack.io' }
         jcenter()
-        maven {
-            url "https://dl.bintray.com/cometchat/pro"
-        }
     }
 }
 

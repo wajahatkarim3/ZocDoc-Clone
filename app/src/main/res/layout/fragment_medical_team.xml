@@ -54,7 +54,7 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <com.cometchat.pro.uikit.CometChatConversationList
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cometchatConversationList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

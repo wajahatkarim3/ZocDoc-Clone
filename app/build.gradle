@@ -55,14 +55,6 @@ dependencies {
     implementation 'com.github.gurleensethi:LiteUtilities:v1.3.0'
     implementation("io.coil-kt:coil:1.1.0")
     implementation  "io.noties.markwon:core:4.6.1"
-
-    // Firebase
-    implementation platform('com.google.firebase:firebase-bom:26.2.0')
-    implementation 'com.google.firebase:firebase-auth-ktx'
-
-    // CometChat
-    implementation 'com.cometchat:pro-android-chat-sdk:2.1.6'
-    implementation(project(":uikit"))
     implementation "androidx.emoji:emoji-appcompat:1.0.0"
 
     testImplementation 'junit:junit:4.+'

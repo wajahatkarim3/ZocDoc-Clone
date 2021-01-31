@@ -5,15 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.view.MenuItem
-import com.cometchat.pro.core.CometChat
-import com.cometchat.pro.exceptions.CometChatException
-import com.cometchat.pro.models.User
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
-import com.thetechnocafe.gurleensethi.liteutils.info
-import com.wajahatkarim3.zocdoc.R
 import com.wajahatkarim3.zocdoc.databinding.ActivityLoginBinding
+import kotlin.random.Random
 
 class LoginActivity : AppCompatActivity() {
 
@@ -65,40 +58,23 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
-        var auth = FirebaseAuth.getInstance()
-        auth.signInWithEmailAndPassword(bi.txtEmail.text.toString(), bi.txtPassword.text.toString())
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    var firebaseUser = auth.currentUser
-                    CometChat.login(firebaseUser!!.uid, getString(R.string.auth_key), object : CometChat.CallbackListener<User>() {
-                        override fun onSuccess(u: User?) {
-                            if (u?.metadata?.has("isDoctor") == true && u.metadata?.getBoolean("isDoctor") == true) {
-                                val i = Intent(applicationContext, DoctorMainActivity::class.java)
-                                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                startActivity(i)
-                                finish()
-                            }
-                            else {
-                                val i = Intent(applicationContext, MainActivity::class.java)
-                                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                startActivity(i)
-                                finish()
-                            }
-                        }
-
-                        override fun onError(ex: CometChatException?) {
-                            Snackbar.make(bi.root, ex?.localizedMessage ?: "Couldn't login CometChat user", Snackbar.LENGTH_SHORT).show()
-                        }
-                    })
-
-                } else {
-                    Snackbar.make(bi.root, "Couldn't login Firebase user", Snackbar.LENGTH_SHORT).show()
-                }
-            }
+        var isDoctor = Random.nextBoolean()
+        if (isDoctor) {
+            val i = Intent(applicationContext, DoctorMainActivity::class.java)
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(i)
+            finish()
+        }
+        else {
+            val i = Intent(applicationContext, MainActivity::class.java)
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(i)
+            finish()
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -1,17 +1,14 @@
 package com.wajahatkarim3.zocdoc.screens
 
-import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.cometchat.pro.core.CometChat
-import com.cometchat.pro.exceptions.CometChatException
-import com.google.android.material.snackbar.Snackbar
 import com.wajahatkarim3.zocdoc.R
 import com.wajahatkarim3.zocdoc.databinding.FragmentProfileBinding
+import kotlin.random.Random
 
 class ProfileFragment : Fragment() {
 
@@ -46,25 +43,18 @@ class ProfileFragment : Fragment() {
         }
 
         bi.txtSignout.setOnClickListener {
-            CometChat.logout(object : CometChat.CallbackListener<String>() {
-                override fun onSuccess(p0: String?) {
-                    val i = Intent(activity, MainActivity::class.java)
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(i)
-                    activity?.finish()
-                }
-
-                override fun onError(ex: CometChatException?) {
-                    Snackbar.make(bi.root, ex?.localizedMessage ?: "Couldn't logout CometChat user", Snackbar.LENGTH_SHORT).show()
-                }
-            })
+            val i = Intent(activity, MainActivity::class.java)
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(i)
+            activity?.finish()
         }
     }
 
     fun setLoggedInUI() {
-        if (CometChat.getLoggedInUser() == null) {
+        var isLoggedIn = Random.nextBoolean()
+        if (isLoggedIn) {
             bi.txtSignup.visibility = View.VISIBLE
             bi.txtLogin.visibility = View.VISIBLE
             bi.txtSignout.visibility = View.GONE
@@ -73,7 +63,7 @@ class ProfileFragment : Fragment() {
             bi.txtSignup.visibility = View.GONE
             bi.txtLogin.visibility = View.GONE
             bi.txtSignout.visibility = View.VISIBLE
-            bi.txtName.setText(getString(R.string.hello_name, CometChat.getLoggedInUser().name))
+            bi.txtName.setText(getString(R.string.hello_name, "UserName"))
         }
     }
 }
