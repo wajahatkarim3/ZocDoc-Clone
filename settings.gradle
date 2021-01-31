@@ -1,3 +1,2 @@
-include ':uikit'
 rootProject.name = "ZocDoc"
 include ':app'
