@@ -3,7 +3,7 @@ ZocDoc UI clone is an Android Demo app (using **CometChat Pro** and **Java Chat 
 [![Platform](https://img.shields.io/badge/Platform-Android-brightgreen.svg)](#)      [![Platform](https://img.shields.io/badge/Language-Kotlin-yellowgreen.svg)](#)
 
 ## Demo
-![](https://raw.githubusercontent.com/wajahatkarim3/ZocDoc-Clone/main/screenshots/ZocDoc_AppDemo.gif)
+![](https://github.com/wajahatkarim3/ZocDoc-Clone/blob/main/screenshots/ZocDoc_AppDemo.gif)
 
 ## Technology
 This demo uses:
