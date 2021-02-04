@@ -74,56 +74,60 @@ class SignupActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         var firebaseUser = auth.currentUser
 
-                        var cometUser = User()
-                        cometUser.uid = firebaseUser!!.uid
-                        cometUser.name = bi.txtName.text.toString()
-
-                        var meta = JSONObject()
-                        meta.put("isDoctor", bi.radioDoctor.isChecked)
-                        cometUser.metadata = meta
-
-                        CometChat.createUser(cometUser, getString(R.string.auth_key), object : CometChat.CallbackListener<User>() {
-                            override fun onSuccess(u: User?) {
-                                Log.d("createUser", u.toString());
-
-                                CometChat.login(cometUser.uid, getString(R.string.auth_key), object : CometChat.CallbackListener<User>() {
-                                    override fun onSuccess(u: User?) {
-
-                                        if (u?.metadata?.has("isDoctor") == true && u.metadata?.getBoolean("isDoctor") == true) {
-                                            val i = Intent(applicationContext, DoctorMainActivity::class.java)
-                                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                            startActivity(i)
-                                            finish()
-                                        }
-                                        else {
-                                            val i = Intent(applicationContext, MainActivity::class.java)
-                                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                            startActivity(i)
-                                            finish()
-                                        }
-
-                                    }
-
-                                    override fun onError(ex: CometChatException?) {
-                                        Snackbar.make(bi.root, ex?.localizedMessage ?: "Couldn't login CometChat user", Snackbar.LENGTH_SHORT).show()
-                                    }
-                                })
-                            }
-
-                            override fun onError(ex: CometChatException?) {
-                                Snackbar.make(bi.root, ex?.localizedMessage ?: "Couldn't create CometChat user", Snackbar.LENGTH_SHORT).show()
-                            }
-                        })
+                        createAndLoginCometUser(firebaseUser!!.uid, bi.txtName.text.toString(), bi.radioDoctor.isChecked)
 
                     } else {
                         Snackbar.make(bi.root, "Authentication failed!", Snackbar.LENGTH_SHORT).show()
                     }
                 }
         }
+    }
+
+    fun createAndLoginCometUser(uid: String, name: String, isDoctor: Boolean) {
+        var cometUser = User()
+        cometUser.uid = uid
+        cometUser.name = name
+
+        var meta = JSONObject()
+        meta.put("isDoctor", isDoctor)
+        cometUser.metadata = meta
+
+        CometChat.createUser(cometUser, getString(R.string.auth_key), object : CometChat.CallbackListener<User>() {
+            override fun onSuccess(u: User?) {
+                Log.d("createUser", u.toString());
+
+                CometChat.login(cometUser.uid, getString(R.string.auth_key), object : CometChat.CallbackListener<User>() {
+                    override fun onSuccess(u: User?) {
+
+                        if (u?.metadata?.has("isDoctor") == true && u.metadata?.getBoolean("isDoctor") == true) {
+                            val i = Intent(applicationContext, DoctorMainActivity::class.java)
+                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            startActivity(i)
+                            finish()
+                        }
+                        else {
+                            val i = Intent(applicationContext, MainActivity::class.java)
+                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            startActivity(i)
+                            finish()
+                        }
+
+                    }
+
+                    override fun onError(ex: CometChatException?) {
+                        Snackbar.make(bi.root, ex?.localizedMessage ?: "Couldn't login CometChat user", Snackbar.LENGTH_SHORT).show()
+                    }
+                })
+            }
+
+            override fun onError(ex: CometChatException?) {
+                Snackbar.make(bi.root, ex?.localizedMessage ?: "Couldn't create CometChat user", Snackbar.LENGTH_SHORT).show()
+            }
+        })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

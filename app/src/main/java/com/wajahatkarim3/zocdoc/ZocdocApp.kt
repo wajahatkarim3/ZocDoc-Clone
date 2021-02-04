@@ -8,6 +8,7 @@ import androidx.emoji.text.FontRequestEmojiCompatConfig
 import com.cometchat.pro.core.AppSettings
 import com.cometchat.pro.core.CometChat
 import com.cometchat.pro.exceptions.CometChatException
+import com.cometchat.pro.uikit.Settings.UIKitSettings
 
 class ZocdocApp : Application() {
 
@@ -46,5 +47,8 @@ class ZocdocApp : Application() {
                 Log.d("ZocdocApp", "Initialization failed with exception: " + e.localizedMessage)
             }
         })
+
+        // Setting Colors
+        UIKitSettings.setColor(resources.getString(R.color.colorPrimaryVariant))
     }
 }

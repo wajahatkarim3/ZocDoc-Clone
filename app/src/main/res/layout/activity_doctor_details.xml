@@ -82,6 +82,19 @@
                     android:padding="10dp"
                     android:textSize="20sp"/>
 
+                <TextView android:id="@+id/lblLoginToChat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Login to chat with doctor"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorSecondary"
+                    />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>

@@ -5,8 +5,10 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.cometchat.pro.uikit.Settings.UIKitSettings
 import com.wajahatkarim3.zocdoc.R
 import com.wajahatkarim3.zocdoc.databinding.ActivityDoctorMainBinding
+import screen.CometChatConversationListScreen
 
 class DoctorMainActivity : AppCompatActivity() {
 

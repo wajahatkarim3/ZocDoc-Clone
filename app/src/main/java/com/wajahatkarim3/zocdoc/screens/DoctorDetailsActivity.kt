@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import coil.load
 import coil.transform.CircleCropTransformation
+import com.cometchat.pro.core.CometChat
 import com.thetechnocafe.gurleensethi.liteutils.RecyclerAdapterUtil
 import com.wajahatkarim3.zocdoc.R
 import com.wajahatkarim3.zocdoc.databinding.ActivityDoctorDetailsBinding
@@ -62,6 +64,15 @@ class DoctorDetailsActivity : AppCompatActivity() {
                     itemView.findViewById<TextView>(R.id.txtTime).setText(item)
                 }
                 recyclerTimeSlots.adapter = slotsAdapter
+
+                // Chat with Doctor button
+                if (CometChat.getLoggedInUser() == null) {
+                    btnChat.visibility = View.GONE
+                    lblLoginToChat.visibility = View.VISIBLE
+                } else {
+                    btnChat.visibility = View.VISIBLE
+                    lblLoginToChat.visibility = View.GONE
+                }
             }
         }
     }

@@ -12,6 +12,7 @@ import com.cometchat.pro.core.ConversationsRequest
 import com.cometchat.pro.exceptions.CometChatException
 import com.cometchat.pro.models.Conversation
 import com.cometchat.pro.models.User
+import com.cometchat.pro.uikit.Settings.UIKitSettings
 import com.google.android.material.snackbar.Snackbar
 import com.wajahatkarim3.zocdoc.R
 import com.wajahatkarim3.zocdoc.databinding.FragmentConversationsBinding
